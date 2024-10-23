@@ -1,0 +1,32 @@
+METRIC FOR EFFECTIVENESS SCORE FUNCTION: l0
+
+Number of successful attacks against MLaaS Grids: 0
+Number of highly successful attacks against MLaaS Grids: 0
+Number of failed attacks against MLaaS Grids: 4
+Number of ineffective against MLaaS Grids: 0
+Number of NaN Scores MLaaS Grids: 0
+Number of -inf Scores MLaaS Grids: 0
+Total Number of attacks against MLaaS Grids: 4
+Percentage of successful attacks against MLaaS Grids: 0.0\% 
+Mean Effectiveness Score MLaaS: -2.368185561175918
+
+Number of successful attacks against Surrogate Grids: 0
+Number of highly successful attacks against Surrogate Grids: 0
+Number of failed attacks against Surrogate Grids: 0
+Number of ineffective attacks against Surrogate Grids: 4
+Number of NaN Scores Surrogate Grids: 0
+Number of -inf Scores Surrogate Grids: 0
+Total Number of attacks against Surrogate Grids: 4
+Percentage of successful attacks against Surrogate Grids: 0.0\% 
+Percentage of successful attacks against Surrogate Grids removing impossible cases: 0.0\% 
+Mean Effectiveness Score Surrogate: 0.0
+
+Overall number of successful attacks: 0
+Overall number of highly successful attacks: 0
+Overall number of failed attacks: 4
+Overall number of ineffective attacks: : 4
+Overall number of NaN Scores: 0
+Overall number of -inf Scores:: 0
+Total number of Tests: 8
+Percentage of successful attacks: 0.0\% 
+Percentage of successful attacks removing impossible cases: 0.0\% 

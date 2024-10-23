@@ -1,0 +1,32 @@
+METRIC FOR EFFECTIVENESS SCORE FUNCTION: Energy (pJ)
+
+Number of successful attacks against MLaaS Grids: 70
+Number of highly successful attacks against MLaaS Grids: 60
+Number of failed attacks against MLaaS Grids: 2
+Number of ineffective against MLaaS Grids: 0
+Number of NaN Scores MLaaS Grids: 0
+Number of -inf Scores MLaaS Grids: 0
+Total Number of attacks against MLaaS Grids: 72
+Percentage of successful attacks against MLaaS Grids: 97.22222222222221\% 
+Mean Effectiveness Score MLaaS: 0.7157524079879083
+
+Number of successful attacks against Surrogate Grids: 70
+Number of highly successful attacks against Surrogate Grids: 61
+Number of failed attacks against Surrogate Grids: 2
+Number of ineffective attacks against Surrogate Grids: 0
+Number of NaN Scores Surrogate Grids: 0
+Number of -inf Scores Surrogate Grids: 0
+Total Number of attacks against Surrogate Grids: 72
+Percentage of successful attacks against Surrogate Grids: 97.22222222222223\% 
+Percentage of successful attacks against Surrogate Grids removing impossible cases: 97.22222222222221\% 
+Mean Effectiveness Score Surrogate: 0.7628377899916088
+
+Overall number of successful attacks: 140
+Overall number of highly successful attacks: 121
+Overall number of failed attacks: 4
+Overall number of ineffective attacks: : 0
+Overall number of NaN Scores: 0
+Overall number of -inf Scores:: 0
+Total number of Tests: 144
+Percentage of successful attacks: 97.22222222222223\% 
+Percentage of successful attacks removing impossible cases: 97.22222222222223\% 
