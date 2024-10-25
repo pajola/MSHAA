@@ -5,11 +5,11 @@ Selection Hijacking Adversarial Attack**.
 
 ## Reprodicubility & Initalization
 To allow for reproducibility we include the anaconda environment:
-`envoronment.yml`, which imports all the dependencies necessary for running
+`environment.yml`, which imports all the dependencies necessary for running
 the project.
 
 ```shell
-conda env create -f envoronment.yml
+conda env create -f environment.yml
 ```
 
 The created environment is called `thesis_env`, and is activated using the
