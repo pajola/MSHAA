@@ -15,19 +15,23 @@ def tabulate_results(name_dataset, lrs, surrogate_types, poison_rate, VAE_metric
     """
     loss_type = VAE_metric + '_' + VAE_cost_function
 
+    Lambdas_neuron, Lambdas_lr = None, None
     neurons, Lambdas = None, None
     if name_dataset == 'MNIST':
         neurons = [32, 64, 128]
-        Lambdas = ['[32,64,128]', '[32]', '[64]', '[128]']
+        Lambdas_lr = ['[32,64,128]']
+        Lambdas_neuron = ['[32]', '[64]', '[128]']
     elif name_dataset == 'CIFAR10':
         neurons = [128, 256, 512]
-        Lambdas = ['[128,256,512]', '[128]', '[256]', '[512]']
+        Lambdas_lr = ['[128,256,512]']
+        Lambdas_neuron = ['[128]', '[256]', '[512]']
     elif name_dataset == 'SpeechCommands':
         neurons = [128, 256]
-        Lambdas = ['[128,256]', '[128]', '[256]']
+        Lambdas_lr = ['[128,256]']
+        Lambdas_neuron = ['[128]', '[256]']
 
     if lrs == ['full_knowledge_vae']:
-        Lambdas = ['full_knowledge']
+        Lambdas_lr = Lambdas_neuron = ['full_knowledge']
 
     metric = None
     if VAE_metric == 'l0' and name_dataset == 'SpeechCommands':
@@ -44,24 +48,23 @@ def tabulate_results(name_dataset, lrs, surrogate_types, poison_rate, VAE_metric
     result_dict_complete = {'name': [], '>0': [], '>0.5': [], '<0': [], '=0': [], 'nan': [], 'inf': [], 'score': []}
 
     for train_type in surrogate_types:
-        for Lambda in Lambdas:
-            attack_evaluation, result_dict = tabulate_results_per_neuron(
-                name_dataset, loss_type, lrs, neurons, Lambda, poison_rate, metric, train_type, result_dict
+        if lrs == ['full_knowledge_vae']:
+            attack_evaluation, result_dict_complete = tabulate_results_complete(
+                name_dataset, loss_type, lrs, 'full_knowledge', poison_rate, metric, train_type, result_dict_complete
             )
-            attack_evaluation, result_dict_tot = tabulate_results_per_lr(
-                name_dataset, loss_type, lrs, Lambda, poison_rate, metric, train_type, result_dict_tot
-            )
-            if lrs == ['full_knowledge_vae']:
-                attack_evaluation, result_dict_complete = tabulate_results_complete(
-                    name_dataset, loss_type, lrs, Lambda, poison_rate, metric, train_type, result_dict_complete
+        else:
+            for Lambda in Lambdas_neuron:
+                attack_evaluation, result_dict = tabulate_results_per_neuron(
+                    name_dataset, loss_type, lrs, neurons, Lambda, poison_rate, metric, train_type, result_dict
                 )
+            for Lambda in Lambdas_lr:
+                attack_evaluation, result_dict_tot = tabulate_results_per_lr(
+                    name_dataset, loss_type, lrs, Lambda, poison_rate, metric, train_type, result_dict_tot
+                )
+
 
     # Save the statistics of attack success
     if lrs == ['full_knowledge_vae']:
-        path_name = './stats/' + name_dataset + '_' + loss_type + '_complete_attack_success_lr_neuron_stats_100'
-        stats_summary(result_dict, path_name, metric)
-        path_name = './stats/' + name_dataset + '_' + loss_type + '_complete_attack_success_lr_stats_100'
-        stats_summary(result_dict_tot, path_name, metric)
         path_name = './stats/' + name_dataset + '_' + loss_type + '_attack_success_complete_stats_100'
         stats_summary(result_dict_complete, path_name, metric)
     else:
@@ -268,7 +271,8 @@ def tabulate_results_per_neuron(name_dataset, loss_type, lrs, neurons, Lambda, p
             lrs = [0.001, 0.005]
 
     for lr in lrs:
-        for neuron in neurons:
+        neuron_Lambda = int(Lambda.replace('[', '').replace(']', ''))
+        for neuron in [neuron_Lambda]:
             empty_dict['Neurons'].append(neuron)
             empty_dict['lr'].append(lr)
             for pr in prs:
@@ -570,8 +574,12 @@ def tabulate_stats(pr=1):
                     empty_dict_BB[metric].append('N/A')
                     continue
 
-                path_stats = ('./stats/' + datasets_name + '_' + metric + '_linear_attack_success_' + grid_type +
-                              '_stats_' + str(int(pr * 100)) + '.txt')
+                if grid_type == 'complete':
+                    path_stats = ('./stats/' + datasets_name + '_' + metric + '_linear_attack_success_' + grid_type +
+                                  '_stats_' + str(int(pr * 100)) + '.txt')
+                else:
+                    path_stats = ('./stats/' + datasets_name + '_' + metric + '_linear_attack_success_' + grid_type +
+                                  '_stats_' + str(int(pr * 100)) + '.txt')
                 with open(path_stats, 'r') as f:
                     lines = f.readlines()
                     for line in lines:
@@ -710,7 +718,7 @@ def get_stats(stat_metric):
 
             # Save the Table as LaTeX file
             attack_evaluation_WB = pd.DataFrame(WB_dict)
-            attack_evaluation_BB = pd.DataFrame(WB_dict)
+            attack_evaluation_BB = pd.DataFrame(BB_dict)
             name_WB = f'./stats/stats_tables/' + stat_metric + '_WB_' + datasets_name + '_' + grid_type
             name_BB = f'./stats/stats_tables/' + stat_metric + '_BB_' + datasets_name + '_' + grid_type
 

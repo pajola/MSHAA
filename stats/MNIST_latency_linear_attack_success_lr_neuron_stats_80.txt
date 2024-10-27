@@ -1,32 +1,32 @@
 METRIC FOR EFFECTIVENESS SCORE FUNCTION: Latency (s)
 
-Number of successful attacks against MLaaS Grids: 66
-Number of highly successful attacks against MLaaS Grids: 44
-Number of failed attacks against MLaaS Grids: 3
-Number of ineffective against MLaaS Grids: 3
+Number of successful attacks against MLaaS Grids: 17
+Number of highly successful attacks against MLaaS Grids: 10
+Number of failed attacks against MLaaS Grids: 1
+Number of ineffective against MLaaS Grids: 0
 Number of NaN Scores MLaaS Grids: 0
 Number of -inf Scores MLaaS Grids: 0
-Total Number of attacks against MLaaS Grids: 72
-Percentage of successful attacks against MLaaS Grids: 91.66666666666666\% 
-Mean Effectiveness Score MLaaS: 0.5293511983897385
+Total Number of attacks against MLaaS Grids: 18
+Percentage of successful attacks against MLaaS Grids: 94.44444444444444\% 
+Mean Effectiveness Score MLaaS: 0.48222537683640215
 
-Number of successful attacks against Surrogate Grids: 65
-Number of highly successful attacks against Surrogate Grids: 44
+Number of successful attacks against Surrogate Grids: 14
+Number of highly successful attacks against Surrogate Grids: 9
 Number of failed attacks against Surrogate Grids: 3
-Number of ineffective attacks against Surrogate Grids: 4
+Number of ineffective attacks against Surrogate Grids: 1
 Number of NaN Scores Surrogate Grids: 0
 Number of -inf Scores Surrogate Grids: 0
-Total Number of attacks against Surrogate Grids: 72
-Percentage of successful attacks against Surrogate Grids: 90.27777777777777\% 
-Percentage of successful attacks against Surrogate Grids removing impossible cases: 90.27777777777779\% 
-Mean Effectiveness Score Surrogate: 0.515282855385151
+Total Number of attacks against Surrogate Grids: 18
+Percentage of successful attacks against Surrogate Grids: 77.77777777777777\% 
+Percentage of successful attacks against Surrogate Grids removing impossible cases: 77.77777777777779\% 
+Mean Effectiveness Score Surrogate: 0.35640759001515343
 
-Overall number of successful attacks: 131
-Overall number of highly successful attacks: 88
-Overall number of failed attacks: 6
-Overall number of ineffective attacks: : 7
+Overall number of successful attacks: 31
+Overall number of highly successful attacks: 19
+Overall number of failed attacks: 4
+Overall number of ineffective attacks: : 1
 Overall number of NaN Scores: 0
 Overall number of -inf Scores:: 0
-Total number of Tests: 144
-Percentage of successful attacks: 90.97222222222223\% 
-Percentage of successful attacks removing impossible cases: 90.97222222222223\% 
+Total number of Tests: 36
+Percentage of successful attacks: 86.11111111111111\% 
+Percentage of successful attacks removing impossible cases: 86.11111111111111\% 
